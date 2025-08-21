@@ -11,7 +11,7 @@ public class LabelSwiftAssets {
     public static let bundle = Bundle.module
     private init() {}
     
-    public static func shadowBg() -> UIImage? {
-        return UIImage(named: "shadowBg", in: bundle, compatibleWith: nil)
-    }
+    public static let shadowBg: UIImage? = {
+        UIImage(named: "shadowBg", in: bundle, compatibleWith: nil)
+    }()
 }
