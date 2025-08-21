@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CommonTwoRowCell" customModule="Shadhin_shorts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="207" height="303"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="207" height="303"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r94-6E-Nez">
+                        <rect key="frame" x="0.0" y="0.0" width="207" height="303"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImg" translatesAutoresizingMaskIntoConstraints="NO" id="iyG-VJ-mHr">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="303"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientImage" translatesAutoresizingMaskIntoConstraints="NO" id="kag-Ve-800">
+                                <rect key="frame" x="0.0" y="183" width="207" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="E3t-VF-S7A"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The short title will be replace here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbh-BV-phJ">
+                                <rect key="frame" x="12" y="254.33333333333334" width="139" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#shadhinMusic" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALN-2L-qxz">
+                                <rect key="frame" x="12" y="234.33333333333334" width="97.666666666666671" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kag-Ve-800" firstAttribute="leading" secondItem="r94-6E-Nez" secondAttribute="leading" id="4cd-HF-gGz"/>
+                            <constraint firstItem="iyG-VJ-mHr" firstAttribute="top" secondItem="r94-6E-Nez" secondAttribute="top" id="Dh2-2a-WLZ"/>
+                            <constraint firstAttribute="bottom" secondItem="iyG-VJ-mHr" secondAttribute="bottom" id="Eze-FJ-rTT"/>
+                            <constraint firstItem="ALN-2L-qxz" firstAttribute="leading" secondItem="r94-6E-Nez" secondAttribute="leading" constant="12" id="F6M-e7-rMa"/>
+                            <constraint firstItem="fbh-BV-phJ" firstAttribute="leading" secondItem="r94-6E-Nez" secondAttribute="leading" constant="12" id="L6U-1x-O8f"/>
+                            <constraint firstItem="fbh-BV-phJ" firstAttribute="top" secondItem="ALN-2L-qxz" secondAttribute="bottom" constant="3" id="e4T-hA-OUo"/>
+                            <constraint firstAttribute="trailing" secondItem="kag-Ve-800" secondAttribute="trailing" id="fOx-UJ-Jww"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fbh-BV-phJ" secondAttribute="trailing" constant="12" id="g4d-Vl-ptm"/>
+                            <constraint firstItem="iyG-VJ-mHr" firstAttribute="leading" secondItem="r94-6E-Nez" secondAttribute="leading" id="kPn-FM-i8O"/>
+                            <constraint firstAttribute="bottom" secondItem="kag-Ve-800" secondAttribute="bottom" id="kYB-iV-fdh"/>
+                            <constraint firstAttribute="trailing" secondItem="iyG-VJ-mHr" secondAttribute="trailing" id="pdm-tf-K7L"/>
+                            <constraint firstAttribute="bottom" secondItem="fbh-BV-phJ" secondAttribute="bottom" constant="15" id="y8e-Lq-5eX"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ALN-2L-qxz" secondAttribute="trailing" constant="12" id="zgg-mm-44j"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="r94-6E-Nez" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="689-EK-Le3"/>
+                <constraint firstAttribute="trailing" secondItem="r94-6E-Nez" secondAttribute="trailing" id="CRd-dH-d8x"/>
+                <constraint firstItem="r94-6E-Nez" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X9V-S9-Pw3"/>
+                <constraint firstAttribute="bottom" secondItem="r94-6E-Nez" secondAttribute="bottom" id="ksH-Je-djL"/>
+            </constraints>
+            <size key="customSize" width="207" height="303"/>
+            <connections>
+                <outlet property="gradientImgView" destination="kag-Ve-800" id="Ozl-DT-f0r"/>
+                <outlet property="hashTagLabel" destination="ALN-2L-qxz" id="K0g-5e-P9D"/>
+                <outlet property="imageView" destination="iyG-VJ-mHr" id="ATO-nU-qdF"/>
+                <outlet property="titleLabel" destination="fbh-BV-phJ" id="XNY-Fr-p4G"/>
+            </connections>
+            <point key="canvasLocation" x="-113.74045801526717" y="-27.112676056338028"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="gradientImage" width="148" height="41"/>
+        <image name="testImg" width="197" height="295.66665649414062"/>
+    </resources>
+</document>
