@@ -20,19 +20,19 @@ public class DesignableLabel: UILabel {}
 extension UIView {
     
     @IBInspectable
-    var cornerRadius: CGFloat {
+    public var cornerRadius: CGFloat {
         get { layer.cornerRadius }
         set { layer.cornerRadius = newValue }
     }
     
     @IBInspectable
-    var borderWidth: CGFloat {
+    public var borderWidth: CGFloat {
         get { layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
     @IBInspectable
-    var borderColor: UIColor? {
+    public var borderColor: UIColor? {
         get {
             guard let cgColor = layer.borderColor else { return nil }
             return UIColor(cgColor: cgColor)
@@ -41,25 +41,25 @@ extension UIView {
     }
     
     @IBInspectable
-    var shadowRadius: CGFloat {
+    public var shadowRadius: CGFloat {
         get { layer.shadowRadius }
         set { layer.shadowRadius = newValue }
     }
     
     @IBInspectable
-    var shadowOpacity: Float {
+    public var shadowOpacity: Float {
         get { layer.shadowOpacity }
         set { layer.shadowOpacity = newValue }
     }
     
     @IBInspectable
-    var shadowOffset: CGSize {
+    public var shadowOffset: CGSize {
         get { layer.shadowOffset }
         set { layer.shadowOffset = newValue }
     }
     
     @IBInspectable
-    var shadowColor: UIColor? {
+    public var shadowColor: UIColor? {
         get {
             guard let cgColor = layer.shadowColor else { return nil }
             return UIColor(cgColor: cgColor)
