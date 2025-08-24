@@ -5,30 +5,38 @@ import PackageDescription
 
 let package = Package(
     name: "LabelSwift",
+    platforms: [
+        .iOS(.v13)
+    ],
+    
     products: [
-        
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        
         .library(
             name: "LabelSwift",
-            targets: ["LabelSwift"]),
+            targets: ["LabelSwift"]
+        ),
+    ],
+    
+    dependencies: [
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.6.0"),
+        .package(url: "https://github.com/huri000/SwiftEntryKit", from: "2.0.0"),
+        .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.5.2"),
+        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "8.0.0")
     ],
     
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        
         .target(
             name: "LabelSwift",
+            dependencies: [
+                "Alamofire",
+                "SwiftEntryKit",
+                .product(name: "Lottie", package: "lottie-spm"),
+                "Kingfisher"
+            ],
             path: "Sources",
             resources: [
                 .process("Resources/Media.xcassets")
             ]
-        ),
-        
-        .testTarget(
-            name: "LabelSwiftTests",
-            dependencies: ["LabelSwift"]
-        ),
+        )
     ]
+
 )
