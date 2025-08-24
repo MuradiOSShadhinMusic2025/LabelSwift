@@ -9,13 +9,13 @@
 import UIKit
 
 @IBDesignable
-class DesignableView: UIView {}
+public class DesignableView: UIView {}
 
 @IBDesignable
-class DesignableButton: UIButton {}
+public class DesignableButton: UIButton {}
 
 @IBDesignable
-class DesignableLabel: UILabel {}
+public class DesignableLabel: UILabel {}
 
 extension UIView {
     
