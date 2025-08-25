@@ -1,53 +1,18 @@
 //
 //  ShortsPlayerTVCell.swift
-//  ShortsPlayer
+//  LabelSwift
 //
-//  Created by MD Murad Hossain on 6/4/25.
+//  Created by Shadhin Music on 25/8/25.
+//
 
 import UIKit
 import AVFoundation
+import Lottie
 import Kingfisher
 import Alamofire
-import Lottie
-import AVKit
 
 @MainActor
-
 class ShortsPlayerTVCell: UITableViewCell {
-    
-    // MARK: - Outlets
-    @IBOutlet weak var channelNameLabel: UILabel!
-    @IBOutlet weak var songTitleLabel: UILabel!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var profileBtn: UIButton!
-    @IBOutlet weak var profileFollowBtn: UIButton!
-    @IBOutlet weak var loveBtn: UIButton!
-    @IBOutlet weak var commentBtn: UIButton!
-    @IBOutlet weak var shareBtn: UIButton!
-    @IBOutlet weak var moreBtn: UIButton!
-    @IBOutlet weak var fullMusicBtn: UIButton!
-    @IBOutlet weak var loveCountLabel: UILabel!
-    @IBOutlet weak var commentCountLabel: UILabel!
-    @IBOutlet weak var commentBgView: UIView!
-    @IBOutlet weak var shareCountLabel: UILabel!
-    @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var albumNameLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var soundWaveAnimView: LottieAnimationView!
-    @IBOutlet weak var musicTitleBgView: UIView!
-    @IBOutlet weak var fullMusicAnimView: LottieAnimationView!
-    @IBOutlet weak var playPasueIconImgView: UIImageView!
-    @IBOutlet weak var isVerfiedImgView: UIImageView!
-    @IBOutlet weak var shortsPlaySlider: UISlider!
-    @IBOutlet weak var hashTagCollectionView: UICollectionView!
-    @IBOutlet weak var hashTagHeightLayout: NSLayoutConstraint!
-    @IBOutlet weak var hashTagCVBottomLayout: NSLayoutConstraint!
-    
-    // MARK: - Audio Outlets
-    @IBOutlet weak var audioThumbImageView: UIImageView!
-    @IBOutlet weak var audioVisualEffectView: UIVisualEffectView!
-    @IBOutlet weak var audioBgView: UIView!
-    @IBOutlet weak var audioEqualizerAnimView: LottieAnimationView!
     
     // MARK: - Properties
     static let identifier = "ShortsPlayerTVCell"
@@ -86,13 +51,52 @@ class ShortsPlayerTVCell: UITableViewCell {
     var reelsContent: ReelsContent?
     var currentLoveCount: Int = 0
     
-    // MARK: -- Clouser Methods --
+    // MARK: - UI Elements (Programmatic Outlets)
+    private let channelNameLabel: UILabel = UILabel()
+    private let songTitleLabel: UILabel = UILabel()
+    private let thumbnailImageView: UIImageView = UIImageView()
+    private let profileBtn: UIButton = UIButton(type: .system)
+    private let profileFollowBtn: UIButton = UIButton(type: .system)
+    private let loveBtn: UIButton = UIButton(type: .system)
+    private let commentBtn: UIButton = UIButton(type: .system)
+    private let shareBtn: UIButton = UIButton(type: .system)
+    private let moreBtn: UIButton = UIButton(type: .system)
+    private let fullMusicBtn: UIButton = UIButton(type: .system)
+    private let loveCountLabel: UILabel = UILabel()
+    private let commentCountLabel: UILabel = UILabel()
+    private let commentBgView: UIView = UIView()
+    private let shareCountLabel: UILabel = UILabel()
+    private let songNameLabel: UILabel = UILabel()
+    private let albumNameLabel: UILabel = UILabel()
+    private let artistLabel: UILabel = UILabel()
+    private let soundWaveAnimView: LottieAnimationView = LottieAnimationView()
+    private let musicTitleBgView: UIView = UIView()
+    private let fullMusicAnimView: LottieAnimationView = LottieAnimationView()
+    private let playPasueIconImgView: UIImageView = UIImageView()
+    private let isVerfiedImgView: UIImageView = UIImageView()
+    private let shortsPlaySlider: UISlider = UISlider()
+    private let hashTagCollectionView: UICollectionView = {
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 3
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+    }()
+    private let hashTagHeightLayout: NSLayoutConstraint!
+    private let hashTagCVBottomLayout: NSLayoutConstraint!
+    
+    // MARK: - Audio UI Elements
+    private let audioThumbImageView: UIImageView = UIImageView()
+    private let audioVisualEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    private let audioBgView: UIView = UIView()
+    private let audioEqualizerAnimView: LottieAnimationView = LottieAnimationView()
+    
+    // MARK: - Closure Methods
     var didTapChannelBtnClick: (() -> Void)?
     var hashTagClicked: ((Int) -> Void)?
     var isLovedDisLoved: (() -> Void)?
     var didTappedCommentBtn: (() -> Void)?
     var didTapthreeDotMenuClick: ((Bool) -> Void)?
-
     
     // MARK: - Cycle/Init
     override func awakeFromNib() {
@@ -106,16 +110,19 @@ class ShortsPlayerTVCell: UITableViewCell {
         }
     }
 
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        thumbnailImageView.image = nil // Clear the image
-        videoLayer.player = nil // Clear the player
-        videoLayer.isHidden = true // Hide the video layer
-        videoURL = nil // Reset the video URL
-        stopSoundWaveAnimation() // Stop animations
-        hashtags.removeAll() // Clear hashtags
-        reelsContent = nil // Clear content
+        thumbnailImageView.image = nil
+        videoLayer.player = nil
+        videoLayer.isHidden = true
+        videoURL = nil
+        stopSoundWaveAnimation()
+        hashtags.removeAll()
+        reelsContent = nil
         loveCountLabel.text = "0"
         commentCountLabel.text = "0"
         shareCountLabel.text = "0"
@@ -126,175 +133,63 @@ class ShortsPlayerTVCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.videoLayer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        self.setupUI()
+        videoLayer.frame = contentView.bounds
     }
     
-   //    deinit {
-   //        // Capture the token and player in local variables inside a closure
-   ////        let token = timeObserverToken
-   //        let player = observedPlayer
-   //
-   //        // Only use them inside a Task on the MainActor
-   //        if let token = token, let player = player {
-   //            Task { @MainActor in
-   //                player.removeTimeObserver(token)
-   //            }
-   //        }
-   //
-   //        // Reset properties (safe because we’re just setting to nil)
-   ////        timeObserverToken = nil
-   //        observedPlayer = nil
-   //    }
-
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard keyPath == "timeControlStatus",
-              let player = object as? AVPlayer else { return }
-
-        DispatchQueue.main.async {
-            
-            print(player.timeControlStatus.rawValue)
-            
-            
-            if player.timeControlStatus == .playing {
-                self.startSoundWaveAnimation()
-            } else {
-                self.stopSoundWaveAnimation()
-            }
-        }
-    }
-
     // MARK: - Actions
-    @IBAction func didTapChannelBtnAction(_ sender: UIButton) {
+    @objc private func didTapChannelBtnAction() {
         didTapChannelBtnClick?()
     }
     
-    @IBAction func didTapChannelFollowBtnAction(_ sender: UIButton) {
-        self.profileFollowBtn.setBackgroundImage(ShadhinShort.shared.isProfileFollow ? UIImage(named: "UnFollowing") : UIImage(named: "Following"), for: .normal)
-        self.setupChannelFollowUnFollowing()
+    @objc private func didTapChannelFollowBtnAction() {
+        profileFollowBtn.setBackgroundImage(ShadhinShort.shared.isProfileFollow ? UIImage(named: "UnFollowing") : UIImage(named: "Following"), for: .normal)
+        setupChannelFollowUnFollowing()
         ShadhinShort.shared.isProfileFollow.toggle()
     }
     
-    @IBAction func loveBtnAction(_ sender: UIButton) {
-        self.loveButtonClicked()
-        self.setupLikeDislikeButtons()
+    @objc private func loveBtnAction() {
+        loveButtonClicked()
+        setupLikeDislikeButtons()
     }
     
-    @IBAction func commentBtnAction(_ sender: UIButton) {
-        self.didTappedCommentBtn?()
-        // Handle comment button action
+    @objc private func commentBtnAction() {
+        didTappedCommentBtn?()
     }
     
-    @IBAction func shareBtnAction(_ sender: UIButton) {
+    @objc private func shareBtnAction() {
         // Handle share button action
     }
     
-    @IBAction func moreBtnAction(_ sender: UIButton) {
-        self.didTapthreeDotMenuClick?(self.reelsContent?.streamingURL?.isVideoFile ?? false)
+    @objc private func moreBtnAction() {
+        didTapthreeDotMenuClick?(reelsContent?.streamingURL?.isVideoFile ?? false)
     }
-        
-    @IBAction func fullMusicBtnAction(_ sender: UIButton) {
+    
+    @objc private func fullMusicBtnAction() {
         // Handle full music button action
     }
     
-    @IBAction func sliderValueDidChange(_ sender: UISlider) {
-        
+    @objc private func sliderValueDidChange() {
+        // Handle slider value change
     }
-   }
+}
 
-   // MARK: - Private Methods
-   extension ShortsPlayerTVCell {
-    
-   //    func configureCell(data: ReelsContent, playUrl: String, isVideo: Bool, allFavoriteData: [Favorite]) {
-   //
-   //        self.reelsContent = data
-   //        self.thumbnailImageView.kf.setImage(with: URL(string: data.imageURL?.imageSizeParser(contentType: data.contentType?.rawValue ?? "") ?? ""))
-   //        self.audioThumbImageView.kf.setImage(with: URL(string: data.imageURL?.imageSizeParser(contentType: data.contentType?.rawValue ?? "") ?? ""))
-   //        self.songTitleLabel.text = data.baseContent?.title ?? "Unknown Title"
-   //        self.albumNameLabel.text = data.artists?.first?.name ?? "Unknown Artist"
-   //        self.songNameLabel.text = data.baseContent?.title ?? "Unknown Title"
-   //
-   //        if allFavoriteData.contains(where: {$0.contentId == data.id && $0.contentType == data.contentType?.rawValue ?? ""}) {
-   //            self.isLoveBtnClick = false
-   //            ShadhinShort.shared.isLoved = true
-   //            self.loveBtn.setImage(UIImage(named: "LikeFill"), for: .normal)
-   //        } else {
-   //            self.isLoveBtnClick = true
-   //            ShadhinShort.shared.isLoved = false
-   //            self.loveBtn.setImage(UIImage(named: "Like"), for: .normal)
-   //        }
-   //
-   //        if allFavoriteData.contains(where: {$0.contentId == data.owners?.first?.id}) {
-   //            ShadhinShort.shared.isProfileFollow = true
-   //            self.profileFollowBtn.setBackgroundImage(UIImage(named: "Following"), for: .normal)
-   //        } else {
-   //            self.profileFollowBtn.setBackgroundImage(UIImage(named: "UnFollowing"), for: .normal)
-   //            ShadhinShort.shared.isProfileFollow = false
-   //        }
-   //
-   //        ShadhinShort.shared.loveCount = data.analytics?.favoritesCount ?? 0
-   //        self.currentLoveCount = ShadhinShort.shared.loveCount
-   //        loveCountLabel.text = "\(data.analytics?.favoritesCount ?? 0)"
-   //        commentCountLabel.text = "\(data.analytics?.commentsCount ?? 0)"
-   //        shareCountLabel.text = "\(data.analytics?.sharesCount ?? 0)"
-   //
-   //        if isVideo {
-   //            audioVisualEffectView.isHidden = true
-   //            audioEqualizerAnimView.pause()
-   //            channelNameLabel.text = "\(data.owners?.first?.name ?? "")"
-   //            isVerfiedImgView.isHidden = !(data.owners?.first?.isVerified ?? false)
-   //            hashTagCVBottomLayout.constant = 10
-   //
-   //        } else {
-   //            audioVisualEffectView.isHidden = false
-   //            channelNameLabel.text = ""
-   //            commentBgView.isHidden = true
-   //            audioEqualizerAnimView.pause()
-   //            isVerfiedImgView.isHidden = true
-   //            hashTagCVBottomLayout.constant = 0
-   //        }
-   //
-   //        if let hashtags = data.hashtags {
-   //            self.hashtags = hashtags
-   //            hashTagCollectionView.reloadData()
-   //        }
-   //
-   //        self.updateSliderValue()
-   //        videoURL = playUrl.isEmpty ? nil : playUrl
-   //    }
-    
+// MARK: - Private Methods
+extension ShortsPlayerTVCell {
     func configureCell(data: ReelsContent, playUrl: String, isVideo: Bool, allFavoriteData: [Favorite]) {
         self.reelsContent = data
         
-        // Load thumbnail with Kingfisher
         if let imageUrl = URL(string: data.imageURL?.imageSizeParser(contentType: data.contentType?.rawValue ?? "") ?? "") {
-            thumbnailImageView.kf.setImage(
-                with: imageUrl,
-                placeholder: UIImage(named: "placeholder"), // Optional placeholder
-                options: [.transition(.fade(0.2))],
-                completionHandler: { result in
-                    switch result {
-                    case .success:
-                        print("Thumbnail loaded successfully for URL: \(imageUrl)")
-                    case .failure(let error):
-                        print("Failed to load thumbnail: \(error.localizedDescription)")
-                    }
-                }
-            )
+            thumbnailImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "placeholder"))
             audioThumbImageView.kf.setImage(with: imageUrl)
         } else {
-            thumbnailImageView.image = UIImage(named: "placeholder") // Fallback image
+            thumbnailImageView.image = UIImage(named: "placeholder")
             audioThumbImageView.image = UIImage(named: "placeholder")
-            print("Invalid thumbnail URL")
         }
         
-        // Set labels
         songTitleLabel.text = data.baseContent?.title ?? "Unknown Title"
         albumNameLabel.text = data.artists?.first?.name ?? "Unknown Artist"
         songNameLabel.text = data.baseContent?.title ?? "Unknown Title"
         
-        // Handle favorite state
         if allFavoriteData.contains(where: { $0.contentId == data.id && $0.contentType == data.contentType?.rawValue ?? "" }) {
             isLoveBtnClick = false
             ShadhinShort.shared.isLoved = true
@@ -305,7 +200,6 @@ class ShortsPlayerTVCell: UITableViewCell {
             loveBtn.setImage(UIImage(named: "Like"), for: .normal)
         }
         
-        // Handle follow state
         if allFavoriteData.contains(where: { $0.contentId == data.owners?.first?.id }) {
             ShadhinShort.shared.isProfileFollow = true
             profileFollowBtn.setBackgroundImage(UIImage(named: "Following"), for: .normal)
@@ -314,21 +208,19 @@ class ShortsPlayerTVCell: UITableViewCell {
             profileFollowBtn.setBackgroundImage(UIImage(named: "UnFollowing"), for: .normal)
         }
         
-        // Update analytics
         ShadhinShort.shared.loveCount = data.analytics?.favoritesCount ?? 0
         currentLoveCount = ShadhinShort.shared.loveCount
         loveCountLabel.text = "\(data.analytics?.favoritesCount ?? 0)"
         commentCountLabel.text = "\(data.analytics?.commentsCount ?? 0)"
         shareCountLabel.text = "\(data.analytics?.sharesCount ?? 0)"
         
-        // Configure UI based on content type
         if isVideo {
             audioVisualEffectView.isHidden = true
             audioEqualizerAnimView.pause()
             channelNameLabel.text = data.owners?.first?.name ?? ""
             isVerfiedImgView.isHidden = !(data.owners?.first?.isVerified ?? false)
             hashTagCVBottomLayout.constant = 10
-            videoLayer.isHidden = false // Show video layer for video content
+            videoLayer.isHidden = false
         } else {
             audioVisualEffectView.isHidden = false
             channelNameLabel.text = ""
@@ -336,57 +228,86 @@ class ShortsPlayerTVCell: UITableViewCell {
             audioEqualizerAnimView.pause()
             isVerfiedImgView.isHidden = true
             hashTagCVBottomLayout.constant = 0
-            videoLayer.isHidden = true // Hide video layer for audio content
+            videoLayer.isHidden = true
         }
         
-        // Load hashtags
         if let hashtags = data.hashtags {
             self.hashtags = hashtags
             hashTagCollectionView.reloadData()
         }
         
-        // Set video URL and update slider
         videoURL = playUrl.isEmpty ? nil : playUrl
         updateSliderValue()
     }
     
     private func setupUI() {
-        // add font
-        self.channelNameLabel.font = UIFont.inter(.bold, size: 14)
-        self.songTitleLabel.font = UIFont.circularStd(.book, size: 24)
-        self.songNameLabel.font = UIFont.inter(.regular, size: 14)
-        self.albumNameLabel.font = UIFont.inter(.regular, size: 14)
-        self.artistLabel.font = UIFont.inter(.regular, size: 14)
-        self.loveCountLabel.font = UIFont.inter(.regular, size: 12)
-        self.shareCountLabel.font = UIFont.inter(.regular, size: 12)
-        self.commentCountLabel.font = UIFont.inter(.regular, size: 12)
+        contentView.backgroundColor = .systemBackground
+        videoLayer.backgroundColor = UIColor.clear.cgColor
+        videoLayer.videoGravity = .resizeAspectFill
+        contentView.layer.addSublayer(videoLayer)
+        selectionStyle = .none
+        playPasueIconImgView.alpha = 0
         
-        self.audioThumbImageView.layer.cornerRadius = 15.0
-        self.audioThumbImageView.layer.borderWidth = 0.8
-        self.audioThumbImageView.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
-        self.setupLottieJson()
+        // Configure labels
+        channelNameLabel.font = .inter(.bold, size: 14)
+        songTitleLabel.font = .circularStd(.book, size: 24)
+        songNameLabel.font = .inter(.regular, size: 14)
+        albumNameLabel.font = .inter(.regular, size: 14)
+        artistLabel.font = .inter(.regular, size: 14)
+        loveCountLabel.font = .inter(.regular, size: 12)
+        shareCountLabel.font = .inter(.regular, size: 12)
+        commentCountLabel.font = .inter(.regular, size: 12)
         
-        self.contentView.backgroundColor = .systemBackground
-        self.videoLayer.backgroundColor = UIColor.clear.cgColor
-        self.videoLayer.videoGravity = .resizeAspectFill
-        self.thumbnailImageView.layer.addSublayer(videoLayer)
-        self.selectionStyle = .none
-        self.playPasueIconImgView.alpha = 0
-        self.videoLayer.player?.play()
-        self.stopSoundWaveAnimation()
-        self.updateSliderValue()
-
-        // Corner Circle Radius
-        self.profileBtn.layer.cornerRadius = self.profileBtn.bounds.height / 2
-        self.profileBtn.clipsToBounds = true
-        self.musicTitleBgView.layer.cornerRadius = self.musicTitleBgView.bounds.height / 2
-        self.musicTitleBgView.layer.borderColor = UIColor.white.withAlphaComponent(0.2).cgColor
-        self.musicTitleBgView.layer.borderWidth = 0.8
-        self.musicTitleBgView.clipsToBounds = true
-        self.applyGradientToSlider()
-        self.setupHashTagCollectionView()
+        // Add subviews and constraints (simplified layout; adjust as needed)
+        let stackView = UIStackView(arrangedSubviews: [channelNameLabel, songTitleLabel, songNameLabel, albumNameLabel, artistLabel, loveCountLabel, commentCountLabel, shareCountLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        contentView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ])
+        
+        contentView.addSubview(thumbnailImageView)
+        thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            thumbnailImageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6)
+        ])
+        
+        // Add buttons and other views with similar constraints
+        [profileBtn, profileFollowBtn, loveBtn, commentBtn, shareBtn, moreBtn, fullMusicBtn].forEach { btn in
+            btn.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(btn)
+        }
+        NSLayoutConstraint.activate([
+            profileBtn.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 20),
+            profileBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            profileBtn.widthAnchor.constraint(equalToConstant: 40),
+            profileBtn.heightAnchor.constraint(equalToConstant: 40),
+            
+            profileFollowBtn.topAnchor.constraint(equalTo: profileBtn.topAnchor),
+            profileFollowBtn.leadingAnchor.constraint(equalTo: profileBtn.trailingAnchor, constant: 8),
+            profileFollowBtn.widthAnchor.constraint(equalToConstant: 80),
+            profileFollowBtn.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        // Setup Lottie animations
+//        setupLottieJson()
+        
+        // Apply corner radii and gradients
+        profileBtn.layer.cornerRadius = 20
+        musicTitleBgView.layer.cornerRadius = 20
+        musicTitleBgView.layer.borderColor = UIColor.white.withAlphaComponent(0.2).cgColor
+        musicTitleBgView.layer.borderWidth = 0.8
+        applyGradientToSlider()
+        setupHashTagCollectionView()
     }
-
+    
     private func setupLottieJson() {
         soundWaveAnimView.animation = LottieAnimation.named("equalizer_animation")
         soundWaveAnimView.loopMode = .loop
@@ -399,7 +320,6 @@ class ShortsPlayerTVCell: UITableViewCell {
         audioEqualizerAnimView.loopMode = .loop
         audioEqualizerAnimView.animationSpeed = 0.8
     }
-    
     private func loveButtonClicked() {
         if isLoveBtnClick {
             self.loveBtn.setImage(UIImage(named: "LikeFill"), for: .normal)
@@ -433,7 +353,7 @@ class ShortsPlayerTVCell: UITableViewCell {
         }
         self.isLoveBtnClick.toggle()
     }
-    
+
     private func setupLikeDislikeButtons() {
         if !ShadhinShort.shared.isLoved {
             self.viewModel.favoriteAddData(id: self.reelsContent?.id ?? 0, contentType: self.reelsContent?.contentType?.rawValue ?? "", completion: { isSuccess, error  in
@@ -450,7 +370,7 @@ class ShortsPlayerTVCell: UITableViewCell {
             })
         }
     }
-    
+
     private func setupChannelFollowUnFollowing() {
         if !ShadhinShort.shared.isProfileFollow {
             self.viewModel.favoriteAddData(id: self.reelsContent?.owners?.first?.id ?? 0, contentType: "C", completion: { isSuccess, error  in
@@ -467,13 +387,13 @@ class ShortsPlayerTVCell: UITableViewCell {
             })
         }
     }
-    
+
     private func addTapGestureToTogglePlayback() {
         singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleVideoPauseOnOffTap))
         singleTapGesture.numberOfTapsRequired = 1
         contentView.addGestureRecognizer(singleTapGesture)
     }
-    
+
     @objc private func handleVideoPauseOnOffTap() {
         let player = videoLayer.player
         isMediaPlaying.toggle()
@@ -515,7 +435,7 @@ class ShortsPlayerTVCell: UITableViewCell {
         
         setupTimeObserver()
     }
-    
+
     private func observePlayerBufferingState(_ player: AVPlayer?) {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemPlaybackStalled, object: player?.currentItem)
 
@@ -533,23 +453,23 @@ class ShortsPlayerTVCell: UITableViewCell {
         soundWaveAnimView.play()
         fullMusicAnimView.play()
     }
-    
+
     func stopSoundWaveAnimation() {
         soundWaveAnimView.pause()
         audioEqualizerAnimView.pause()
         fullMusicAnimView.pause()
     }
-   }
+    }
 
-   // MARK: - Like/Love ImageView Setup
-   extension ShortsPlayerTVCell {
+    // MARK: - Like/Love ImageView Setup
+    extension ShortsPlayerTVCell {
     private func addDoubleTapGestureForLove() {
         doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapLove))
         doubleTapGesture.numberOfTapsRequired = 2
         contentView.addGestureRecognizer(doubleTapGesture)
         singleTapGesture.require(toFail: doubleTapGesture)
     }
-    
+
     private func setupLikeImageView() {
         likeImageView = UIImageView(image: UIImage(systemName: "heart.fill"))
         likeImageView.tintColor = .red
@@ -563,7 +483,7 @@ class ShortsPlayerTVCell: UITableViewCell {
             likeImageView.heightAnchor.constraint(equalToConstant: 56)
         ])
     }
-    
+
     @objc private func handleDoubleTapLove(gesture: UITapGestureRecognizer) {
         let touchLocation = gesture.location(in: thumbnailImageView)
         likeImageView.center = touchLocation
@@ -572,7 +492,7 @@ class ShortsPlayerTVCell: UITableViewCell {
             loveButtonClicked()
         }
     }
-    
+
     private func animateLikeImageView() {
         likeImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         likeImageView.alpha = 1
@@ -612,11 +532,11 @@ class ShortsPlayerTVCell: UITableViewCell {
         horizontalAnimation.isRemovedOnCompletion = false
         likeImageView.layer.add(horizontalAnimation, forKey: "horizontalMovement")
     }
-   }
+    }
 
-   // MARK: - ShortsPlayer Slider Setup
-   extension ShortsPlayerTVCell {
-    
+    // MARK: - ShortsPlayer Slider Setup
+    extension ShortsPlayerTVCell {
+
     func setupTimeObserver() {
         guard let player = videoLayer.player else { return }
         if let token = timeObserverToken, let oldPlayer = observedPlayer {
@@ -644,7 +564,7 @@ class ShortsPlayerTVCell: UITableViewCell {
         
         observedPlayer = player
     }
-    
+
     func updateSliderValue() {
         guard let player = videoLayer.player else { return }
         let currentTime = CMTimeGetSeconds(player.currentTime())
@@ -652,7 +572,7 @@ class ShortsPlayerTVCell: UITableViewCell {
             shortsPlaySlider.value = Float(currentTime)
         }
     }
-    
+
     @objc private func sliderTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         let point = gestureRecognizer.location(in: shortsPlaySlider)
         let percentage = point.x / shortsPlaySlider.bounds.width
@@ -663,7 +583,7 @@ class ShortsPlayerTVCell: UITableViewCell {
         let newTime = CMTimeMakeWithSeconds(Float64(newValue), preferredTimescale: 600)
         videoLayer.player?.seek(to: newTime)
     }
-    
+
     private func applyGradientToSlider() {
         let gradientColors = [
             UIColor.hash(string: "#5AC8FA").cgColor,
@@ -680,15 +600,15 @@ class ShortsPlayerTVCell: UITableViewCell {
         addTapGestureToSlider()
         updateSliderValue()
     }
-    
+
     private func addTapGestureToSlider() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sliderTapped(_:)))
         shortsPlaySlider.addGestureRecognizer(tapGesture)
     }
-   }
+    }
 
-   // MARK: - ShortsPlayerView Visibleheight
-   extension ShortsPlayerTVCell: @preconcurrency PlayVideoLayerContainer {
+    // MARK: - ShortsPlayerView Visibleheight
+    extension ShortsPlayerTVCell: @preconcurrency PlayVideoLayerContainer {
     func visibleVideoHeight() -> CGFloat {
         let videoFrameInParentSuperView: CGRect? = self.superview?.superview?.convert(
             thumbnailImageView.frame,
@@ -700,11 +620,11 @@ class ShortsPlayerTVCell: UITableViewCell {
         let visibleVideoFrame = videoFrame.intersection(superViewFrame)
         return visibleVideoFrame.size.height
     }
-   }
+    }
 
 
-   // MARK: - HashTag CollectionView Setup
-extension ShortsPlayerTVCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    // MARK: - HashTag CollectionView Setup
+    extension ShortsPlayerTVCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func setupHashTagCollectionView() {
         hashTagCollectionView.delegate = self
         hashTagCollectionView.dataSource = self
@@ -715,11 +635,11 @@ extension ShortsPlayerTVCell: UICollectionViewDelegate, UICollectionViewDataSour
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         hashTagCollectionView.collectionViewLayout = layout
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hashtags.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HashTagCVCell.identifier, for: indexPath) as! HashTagCVCell
         cell.configureCell("#\(hashtags[indexPath.row].displayName ?? "")")
@@ -727,7 +647,7 @@ extension ShortsPlayerTVCell: UICollectionViewDelegate, UICollectionViewDataSour
         cell.layoutIfNeeded()
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = "#\(hashtags[indexPath.row].displayName ?? "")"
         let font = UIFont.inter(.regular, size: 13)
@@ -736,8 +656,8 @@ extension ShortsPlayerTVCell: UICollectionViewDelegate, UICollectionViewDataSour
         let width = ceil(textWidth + padding)
         return CGSize(width: width, height: 25)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.hashTagClicked?(hashtags[indexPath.row].id ?? 0)
     }
-}
+    }
