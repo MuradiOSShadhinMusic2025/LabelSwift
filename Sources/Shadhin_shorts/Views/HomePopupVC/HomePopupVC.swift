@@ -40,7 +40,7 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
     @IBAction func didTapExploreAction(_ sender: UIButton) {
         SwiftEntryKit.dismiss {
             if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                let vc = HomeExploreVC(nibName: "HomeExploreVC", bundle: Bundle.shadhinShorts)
+                let vc = HomeExploreVC(nibName: "HomeExploreVC", bundle: Bundle.module)
                 let navController = UINavigationController(rootViewController: vc)
                 navController.isNavigationBarHidden = true
                 navController.modalPresentationStyle = .fullScreen
