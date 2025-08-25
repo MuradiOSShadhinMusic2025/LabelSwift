@@ -69,8 +69,14 @@ extension HomePopupVC {
 //        self.headerShortsAnimView.loopMode = .loop
 //        self.headerShortsAnimView.play()
         
+        if let path = Bundle.module.path(forResource: "Reels_header", ofType: "json") {
+            print("✅ Found animation at \(path)")
+        } else {
+            print("❌ Animation file not found in Bundle.module")
+        }
+
         guard let animView = headerShortsAnimView else { return }
-        animView.animation = LottieAnimation.named("Reels_header", bundle: Bundle.module)
+        animView.animation = LottieAnimation.named("Reels_header", bundle: .module)
         animView.loopMode = .loop
         animView.play()
 

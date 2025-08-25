@@ -34,7 +34,11 @@ let package = Package(
             ],
             path: "Sources",
             resources: [
-                .process("Resources/Media.xcassets")
+                .process("Resources/Media.xcassets"),
+                .process("Resources/Reels_header.json"),
+                .process("Resources/equalizer_animation.json"),
+                .process("Resources/play_animation_reels.json"),
+                .process("Resources/audio_equalizer_animation.json")
             ],
             
             swiftSettings: [
