@@ -152,7 +152,10 @@ extension HomeExploreVC {
     }
     
     private func gotoShortsPlayerVC(data: [ReelsContent], indexPath: IndexPath = [0, 0] ){
-        let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: Bundle(for: ShortsPlayerVC.self))
+//        let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: Bundle(for: ShortsPlayerVC.self))
+        
+        let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
+
         vc.audioReelsData = data
 //        vc.selectedIndexPath = indexPath
 //        vc.allFavoriteData = allFavoriteData
