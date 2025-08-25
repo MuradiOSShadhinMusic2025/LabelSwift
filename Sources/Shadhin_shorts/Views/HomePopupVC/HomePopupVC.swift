@@ -46,9 +46,7 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
                     let navController = UINavigationController(rootViewController: vc)
                     vc.audioReelsData = data
                     self.addChild(vc)
-                    vc.view.frame = shortsPlayBgView.bounds
-                    self.shortsPlayBgView.isHidden = false
-                    self.shortsPlayBgView.addSubview(vc.view)
+                    vc.view.frame = view.bounds
                     vc.didMove(toParent: self)
 
 //                    navController.isNavigationBarHidden = true
