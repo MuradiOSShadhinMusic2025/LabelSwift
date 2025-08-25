@@ -34,7 +34,6 @@ let package = Package(
             ],
             path: "Sources",
             resources: [
-                .process("Shadhin_Shorts"),
                 .process("Resources/Media.xcassets"),
                 .process("Resources/Reels_header.json"),
                 .process("Resources/equalizer_animation.json"),
