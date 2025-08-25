@@ -82,7 +82,9 @@ extension HomePopupVC {
     }
     
     public static func shows(_ safeArea: CGFloat = 0) {
-        let vc = HomePopupVC(nibName: "HomePopupVC", bundle: Bundle(for: HomePopupVC.self))
+//        let vc = HomePopupVC(nibName: "HomePopupVC", bundle: Bundle(for: HomePopupVC.self))
+        let vc = HomePopupVC(nibName: "HomePopupVC", bundle: Bundle.module) // <--- Bundle.module is key
+
         var attributes = EKAttributes.bottomToast
         attributes.entryBackground = .color(color: .clear)
         attributes.screenBackground = .color(color: EKColor(UIColor.black.withAlphaComponent(0.5)))
