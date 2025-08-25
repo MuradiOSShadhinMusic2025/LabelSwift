@@ -373,6 +373,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="albumNameLabel" destination="Sxw-n9-bA8" id="9Ra-ue-lpC"/>
                 <outlet property="artistLabel" destination="5VC-9q-llg" id="6Cu-AM-4cS"/>
                 <outlet property="audioBgView" destination="n57-bA-Ye0" id="7bf-PZ-2Y1"/>
                 <outlet property="audioEqualizerAnimView" destination="ZXS-pE-BVn" id="wWL-mV-q0a"/>
@@ -398,7 +399,7 @@
                 <outlet property="shareBtn" destination="t6R-qI-9w5" id="o4w-jW-aRI"/>
                 <outlet property="shareCountLabel" destination="HUq-Lc-r3S" id="UZD-dN-VWe"/>
                 <outlet property="shortsPlaySlider" destination="Zqk-D9-Yd9" id="7hE-pa-igl"/>
-                <outlet property="songNameLabel" destination="a2b-dh-J5I" id="fgx-7h-3XS"/>
+                <outlet property="songNameLabel" destination="a2b-dh-J5I" id="3oD-ZA-VvS"/>
                 <outlet property="songTitleLabel" destination="iLT-rj-Vwf" id="plo-gB-h63"/>
                 <outlet property="soundWaveAnimView" destination="140-dW-Pem" id="q5l-i8-1nZ"/>
                 <outlet property="thumbnailImageView" destination="xCt-Up-NVP" id="RfM-Ug-g86"/>

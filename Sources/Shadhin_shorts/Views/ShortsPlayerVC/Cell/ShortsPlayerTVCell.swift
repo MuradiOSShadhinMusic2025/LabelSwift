@@ -30,7 +30,7 @@ class ShortsPlayerTVCell: UITableViewCell {
     @IBOutlet weak var commentBgView: UIView!
     @IBOutlet weak var shareCountLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
-//    @IBOutlet weak var albumNameLabel: UILabel!
+    @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var soundWaveAnimView: LottieAnimationView!
     @IBOutlet weak var musicTitleBgView: UIView!
@@ -291,7 +291,7 @@ extension ShortsPlayerTVCell {
         
         // Set labels
         songTitleLabel.text = data.baseContent?.title ?? "Unknown Title"
-//        albumNameLabel.text = data.artists?.first?.name ?? "Unknown Artist"
+        albumNameLabel.text = data.artists?.first?.name ?? "Unknown Artist"
         songNameLabel.text = data.baseContent?.title ?? "Unknown Title"
         
         // Handle favorite state
@@ -355,7 +355,7 @@ extension ShortsPlayerTVCell {
         self.channelNameLabel.font = UIFont.inter(.bold, size: 14)
         self.songTitleLabel.font = UIFont.circularStd(.book, size: 24)
         self.songNameLabel.font = UIFont.inter(.regular, size: 14)
-//        self.albumNameLabel.font = UIFont.inter(.regular, size: 14)
+        self.albumNameLabel.font = UIFont.inter(.regular, size: 14)
         self.artistLabel.font = UIFont.inter(.regular, size: 14)
         self.loveCountLabel.font = UIFont.inter(.regular, size: 12)
         self.shareCountLabel.font = UIFont.inter(.regular, size: 12)
