@@ -41,13 +41,17 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
         self.viewModel.onForYouDataReceived = { [weak self] response in
             guard let self = self else { return }
             if let data = response.data {
+                let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
+                vc.audioReelsData = data
+
+                self.addChild(vc)
+                vc.view.frame = self.view.bounds
+                self.view.addSubview(vc.view)   // 👈 addSubview করতে হবে
+                vc.didMove(toParent: self)
+
+                
                 if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                    let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
-                    let navController = UINavigationController(rootViewController: vc)
-                    vc.audioReelsData = data
-                    self.addChild(vc)
-                    vc.view.frame = view.bounds
-                    vc.didMove(toParent: self)
+
 
 //                    navController.isNavigationBarHidden = true
 //                    navController.modalPresentationStyle = .fullScreen
