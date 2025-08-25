@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SeeAllWithThreeImgSubCell" customModule="Shadhin_shorts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="555"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="555"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G38-YV-OQu">
+                        <rect key="frame" x="0.0" y="0.0" width="382" height="555"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradientImage" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-zS-5on">
+                        <rect key="frame" x="0.0" y="425" width="382" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="130" id="uhL-zX-Ti0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnF-0H-A1f">
+                        <rect key="frame" x="12" y="519.66666666666663" width="358" height="19.333333333333371"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="G38-YV-OQu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4v4-8e-ZzW"/>
+                <constraint firstItem="qnF-0H-A1f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5ru-2Z-w5o"/>
+                <constraint firstAttribute="bottom" secondItem="qnF-0H-A1f" secondAttribute="bottom" constant="16" id="BPj-6G-6jr"/>
+                <constraint firstAttribute="bottom" secondItem="Mpd-zS-5on" secondAttribute="bottom" id="Lha-U1-905"/>
+                <constraint firstItem="Mpd-zS-5on" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UxE-HX-rxY"/>
+                <constraint firstAttribute="bottom" secondItem="G38-YV-OQu" secondAttribute="bottom" id="WgD-6f-ZHH"/>
+                <constraint firstAttribute="trailing" secondItem="Mpd-zS-5on" secondAttribute="trailing" id="ZhV-kf-N6B"/>
+                <constraint firstItem="G38-YV-OQu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eRB-ls-2Du"/>
+                <constraint firstAttribute="trailing" secondItem="qnF-0H-A1f" secondAttribute="trailing" constant="12" id="neH-Vd-251"/>
+                <constraint firstAttribute="trailing" secondItem="G38-YV-OQu" secondAttribute="trailing" id="uwT-GD-sx5"/>
+            </constraints>
+            <size key="customSize" width="382" height="555"/>
+            <connections>
+                <outlet property="gradientImgView" destination="Mpd-zS-5on" id="ANb-Gn-uE3"/>
+                <outlet property="imgView" destination="G38-YV-OQu" id="gog-Jk-W23"/>
+                <outlet property="songTitleLbl" destination="qnF-0H-A1f" id="egY-eb-PQg"/>
+            </connections>
+            <point key="canvasLocation" x="241.22137404580153" y="196.12676056338029"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="gradientImage" width="148" height="41"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

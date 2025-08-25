@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeExploreVC" customModule="Shadhin_shorts" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="Ron-Kp-Qyd" id="QFC-kb-KaR"/>
+                <outlet property="crossBtn" destination="AGP-uI-S3r" id="kIC-2H-Yop"/>
+                <outlet property="exploreBtn" destination="MsA-pA-RPE" id="KBs-cg-bug"/>
+                <outlet property="followingBtn" destination="Z6b-SH-X2A" id="48P-12-n5n"/>
+                <outlet property="forYouBtn" destination="bv9-j7-oDi" id="CwR-Ms-EAC"/>
+                <outlet property="indicator" destination="0Jh-UJ-etr" id="TCW-Rd-Vdz"/>
+                <outlet property="navBtnStackView" destination="DDu-9z-heo" id="W36-cw-x9L"/>
+                <outlet property="shortsPlayBgView" destination="2cO-WN-a8X" id="8To-mt-6c7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ron-Kp-Qyd">
+                    <rect key="frame" x="0.0" y="111" width="393" height="707"/>
+                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XKN-Lq-Vs0">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0Jh-UJ-etr">
+                    <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                    <color key="color" name="bgBtnColor"/>
+                </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cO-WN-a8X">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DDu-9z-heo">
+                    <rect key="frame" x="5" y="59" width="320" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGP-uI-S3r" userLabel="crossBtn">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="SPI-zp-3pB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="tintColor" name="textColorModeTypeColor"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <imageReference key="image" image="xmark" catalog="system" symbolScale="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="crossBtnAction:" destination="-1" eventType="touchUpInside" id="e6z-UR-1OF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsA-pA-RPE">
+                            <rect key="frame" x="44" y="0.0" width="75" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="75" id="0DK-tJ-7Mk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Explore">
+                                <color key="titleColor" name="textColorModeTypeColor"/>
+                            </state>
+                            <connections>
+                                <action selector="exploreBtnAction:" destination="-1" eventType="touchUpInside" id="ieH-Qw-0AE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bv9-j7-oDi">
+                            <rect key="frame" x="127" y="0.0" width="90" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="ayt-wj-RKH"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="For You">
+                                <color key="titleColor" name="textColorModeTypeColor"/>
+                            </state>
+                            <connections>
+                                <action selector="forYouBtnAction:" destination="-1" eventType="touchUpInside" id="rbb-MX-axz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6b-SH-X2A">
+                            <rect key="frame" x="225" y="0.0" width="95" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="95" id="iGk-iz-5sq"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Following">
+                                <color key="titleColor" name="textColorModeTypeColor"/>
+                            </state>
+                            <connections>
+                                <action selector="followingBtnAction:" destination="-1" eventType="touchUpInside" id="pME-UY-utb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eBA-UI-3j7"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="mainBgModeTypeColor"/>
+            <constraints>
+                <constraint firstItem="Ron-Kp-Qyd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Luz-hj-JFd"/>
+                <constraint firstAttribute="bottom" secondItem="2cO-WN-a8X" secondAttribute="bottom" id="MGj-A5-ZIL"/>
+                <constraint firstItem="DDu-9z-heo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PBR-Th-b51"/>
+                <constraint firstItem="DDu-9z-heo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="R0T-ET-BAD"/>
+                <constraint firstItem="2cO-WN-a8X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RTl-wg-GxH"/>
+                <constraint firstItem="Ron-Kp-Qyd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TeG-ge-ksx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ron-Kp-Qyd" secondAttribute="bottom" id="Y5j-jv-Gak"/>
+                <constraint firstItem="2cO-WN-a8X" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bPe-YM-5z4"/>
+                <constraint firstItem="0Jh-UJ-etr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dbj-Ch-6iO"/>
+                <constraint firstItem="2cO-WN-a8X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jsR-RT-Ue9"/>
+                <constraint firstItem="Ron-Kp-Qyd" firstAttribute="top" secondItem="DDu-9z-heo" secondAttribute="bottom" constant="8" id="naM-PV-PqN"/>
+                <constraint firstItem="0Jh-UJ-etr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="sGL-vV-Kue"/>
+            </constraints>
+            <point key="canvasLocation" x="23.664122137404579" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="bgBtnColor">
+            <color red="0.31000000238418579" green="0.67799997329711914" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="mainBgModeTypeColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColorModeTypeColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

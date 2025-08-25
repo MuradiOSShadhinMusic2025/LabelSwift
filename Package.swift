@@ -17,7 +17,7 @@ let package = Package(
     ],
     
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.6.0"),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.10.0"),
         .package(url: "https://github.com/huri000/SwiftEntryKit", from: "2.0.0"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.5.2"),
         .package(url: "https://github.com/onevcat/Kingfisher.git", from: "8.0.0")
@@ -35,7 +35,12 @@ let package = Package(
             path: "Sources",
             resources: [
                 .process("Resources/Media.xcassets")
+            ],
+            
+            swiftSettings: [
+                .enableExperimentalFeature("RelaxedConcurrency")
             ]
+
         )
     ]
 
