@@ -373,7 +373,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="albumNameLabel" destination="Sxw-n9-bA8" id="mJi-Ln-A59"/>
                 <outlet property="artistLabel" destination="5VC-9q-llg" id="6Cu-AM-4cS"/>
                 <outlet property="audioBgView" destination="n57-bA-Ye0" id="7bf-PZ-2Y1"/>
                 <outlet property="audioEqualizerAnimView" destination="ZXS-pE-BVn" id="wWL-mV-q0a"/>
