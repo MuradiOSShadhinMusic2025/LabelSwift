@@ -75,10 +75,14 @@ extension HomePopupVC {
             print("❌ Animation file not found in Bundle.module")
         }
 
-        guard let animView = headerShortsAnimView else { return }
-        animView.animation = LottieAnimation.named("Reels_header", bundle: .module)
-        animView.loopMode = .loop
-        animView.play()
+        if let path = Bundle.module.path(forResource: "Reels_header", ofType: "json") {
+            headerShortsAnimView.animation = LottieAnimation.filepath(path)
+            headerShortsAnimView.loopMode = .loop
+            headerShortsAnimView.play()
+        } else {
+            print("❌ Reels_header.json not found in bundle")
+        }
+
 
         self.btnExplore.layer.cornerRadius = self.btnExplore.bounds.height/2
         self.btnExplore.titleLabel?.font = DEVICE_HIEGHT > 990 ? UIFont.inter(.medium, size: 24) : UIFont.inter(.medium, size: 16)
