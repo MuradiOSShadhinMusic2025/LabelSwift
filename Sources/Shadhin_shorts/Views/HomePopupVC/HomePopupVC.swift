@@ -44,6 +44,8 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
                 let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
                 vc.audioReelsData = data
 
+                print("AudiosDAta : \(data)")
+                
                 self.addChild(vc)
                 vc.view.frame = self.view.bounds
                 self.view.addSubview(vc.view)   // 👈 addSubview করতে হবে
