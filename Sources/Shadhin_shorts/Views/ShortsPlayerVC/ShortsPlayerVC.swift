@@ -27,7 +27,6 @@ class ShortsPlayerVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // প্রথমবার visible cell টা play করানো
         playVisibleCell()
     }
 

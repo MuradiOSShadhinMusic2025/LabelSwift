@@ -51,7 +51,7 @@ class ShortsPlayerTVCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "ShortsPlayerTVCell"
     static func nib() -> UINib {
-        return UINib(nibName: identifier, bundle: .init(for: ShortsPlayerTVCell.self))
+        return UINib(nibName: "ShortsPlayerTVCell", bundle: .main)
     }
     
     var playerController: VideoPlayerController?
