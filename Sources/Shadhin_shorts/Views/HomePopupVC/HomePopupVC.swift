@@ -45,10 +45,16 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
                     let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
                     let navController = UINavigationController(rootViewController: vc)
                     vc.audioReelsData = data
-                    navController.isNavigationBarHidden = true
-                    navController.modalPresentationStyle = .fullScreen
-                    window.rootViewController = navController
-                    window.makeKeyAndVisible()
+                    self.addChild(vc)
+                    vc.view.frame = shortsPlayBgView.bounds
+                    self.shortsPlayBgView.isHidden = false
+                    self.shortsPlayBgView.addSubview(vc.view)
+                    vc.didMove(toParent: self)
+
+//                    navController.isNavigationBarHidden = true
+//                    navController.modalPresentationStyle = .fullScreen
+//                    window.rootViewController = navController
+//                    window.makeKeyAndVisible()
                 }
             }
         }
