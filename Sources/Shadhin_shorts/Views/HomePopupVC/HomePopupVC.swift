@@ -28,25 +28,56 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
     public override func viewDidLoad() {
         super.viewDidLoad()
     }
+    private let viewModel = AudioReelsViewModel()
+
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.setupUI()
     }
 
+    private func forYouReelsDataBinding() {
+        self.viewModel.fetchForYouAudioReels()
+        self.viewModel.onForYouDataReceived = { [weak self] response in
+            guard let self = self else { return }
+            if let data = response.data {
+                if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                    let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
+                    let navController = UINavigationController(rootViewController: vc)
+                    vc.audioReelsData = data
+                    navController.isNavigationBarHidden = true
+                    navController.modalPresentationStyle = .fullScreen
+                    window.rootViewController = navController
+                    window.makeKeyAndVisible()
+                }
+            }
+        }
+    }
     
     // MARK: - Actions
     
     @IBAction func didTapExploreAction(_ sender: UIButton) {
         SwiftEntryKit.dismiss {
-            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                let vc = HomeExploreVC(nibName: "HomeExploreVC", bundle: Bundle.module)
-                let navController = UINavigationController(rootViewController: vc)
-                navController.isNavigationBarHidden = true
-                navController.modalPresentationStyle = .fullScreen
-                window.rootViewController = navController
-                window.makeKeyAndVisible()
-            }
+            
+            self.forYouReelsDataBinding()
+//            if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                
+//                private func gotoShortsPlayerVC(data: [ReelsContent], indexPath: IndexPath = [0, 0] ){
+//            //        let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: Bundle(for: ShortsPlayerVC.self))
+//                    
+//                    let vc = ShortsPlayerVC(nibName: "ShortsPlayerVC", bundle: .module)
+//
+//                    vc.audioReelsData = data
+//            //        vc.selectedIndexPath = indexPath
+//            //        vc.allFavoriteData = allFavoriteData
+//                    self.addChild(vc)
+//                    vc.view.frame = shortsPlayBgView.bounds
+//                    self.shortsPlayBgView.isHidden = false
+//                    self.shortsPlayBgView.addSubview(vc.view)
+//                    vc.didMove(toParent: self)
+//                }
+
+//            }
         }
     }
     
