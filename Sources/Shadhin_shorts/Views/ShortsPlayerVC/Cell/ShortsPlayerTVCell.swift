@@ -43,6 +43,7 @@ class ShortsPlayerTVCell: UITableViewCell {
     @IBOutlet weak var hashTagCVBottomLayout: NSLayoutConstraint!
     
     // MARK: - Audio Outlets
+    
     @IBOutlet weak var audioThumbImageView: UIImageView!
     @IBOutlet weak var audioVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var audioBgView: UIView!
