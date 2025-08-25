@@ -65,9 +65,14 @@ public class HomePopupVC: UIViewController, NIBVCProtocol {
 extension HomePopupVC {
     
     private func setupUI() {
-        self.headerShortsAnimView.animation = LottieAnimation.named("Reels_header")
-        self.headerShortsAnimView.loopMode = .loop
-        self.headerShortsAnimView.play()
+//        self.headerShortsAnimView.animation = LottieAnimation.named("Reels_header")
+//        self.headerShortsAnimView.loopMode = .loop
+//        self.headerShortsAnimView.play()
+        
+        guard let animView = headerShortsAnimView else { return }
+        animView.animation = LottieAnimation.named("Reels_header", bundle: Bundle.module)
+        animView.loopMode = .loop
+        animView.play()
 
         self.btnExplore.layer.cornerRadius = self.btnExplore.bounds.height/2
         self.btnExplore.titleLabel?.font = DEVICE_HIEGHT > 990 ? UIFont.inter(.medium, size: 24) : UIFont.inter(.medium, size: 16)
